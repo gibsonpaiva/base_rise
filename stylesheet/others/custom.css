@@ -10,6 +10,18 @@
         padding-top: 5px;
         padding-right: 10px;
     }
+    .img-logorise {
+      width:63px;
+      padding-top: 5px;
+      padding-right: 5px;
+      padding-left: 7px;
+    }
+    .img-logorisedireita {
+      width:75px;
+      padding-top: 4px;
+      padding-right: 5px;
+      padding-left: 15px;
+    }
 /* FIM do Cabeçalho */
 
 /* Slide Bar */

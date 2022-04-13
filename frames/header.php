@@ -11,19 +11,19 @@
         $ImagemPerfil = $db_filebox->loadImagem(2, $_SESSION['user']['id']);
     } else {
         // Caso não esteja conectado, redireciona para a página inicial
-        header("Location: /index.php");   } 
-        
+        header("Location: /index.php");   }
+
         // Instancia os objetos referente a base de dados
         $db_igot = new IGOT();
         $db_filebox = new FileBox();
 
         // Obtém os Próximos Eventos e a contagem de eventos respectivamente
         $html ="";
-        
-        $itens = $db_igot->getEventosProximos();
-        $itens2 = $db_igot->getContagemEventos();    
 
-        // se existir eventos 
+        $itens = $db_igot->getEventosProximos();
+        $itens2 = $db_igot->getContagemEventos();
+
+        // se existir eventos
         if($itens !== null){
 
             for ($i=0;$i<count($itens2);$i++){
@@ -33,16 +33,16 @@
                     <i class="fa  fa-clock-o fa-lg"></i>
                     <span class="label label-success"> '.$itens2[$i]['qtdeEventos'].'</span>
                 </a>
-                <ul class="dropdown-menu" style="width:auto;">               
+                <ul class="dropdown-menu" style="width:auto;">
                 <li class="header" align="center" style="font-size:12px"> <strong><b>'.$itens2[$i]['qtdeEventos'].'</b></strong> evento(s) próximo(s) para se registrar. </li>
-                '; 
-            } 
-         
+                ';
+            }
+
             for ($i=0;$i<count($itens);$i++){
-               
-                $img = $db_filebox->loadImagem(3, $itens[$i]['idAlianca']);        
-                $html .= '               
-                 
+
+                $img = $db_filebox->loadImagem(3, $itens[$i]['idAlianca']);
+                $html .= '
+
                 <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
@@ -58,53 +58,53 @@
                                 </h4>
                                 <p>'.$itens[$i]['Tipo'].'</p>
                             </a>
-                        </li>                
+                        </li>
                     </ul>
-                </li>        
-                ';        
+                </li>
+                ';
             }
-            // Fecha o módulo de eventos 
+            // Fecha o módulo de eventos
             $html .= '
                 <li class="footer"><a  onclick="showModalEventosProximos()" class="btn btn-sm btn-default" type="button" style="border: none; padding: 5px;"> + Ver todos os Eventos</a></li>
-            </ul>      
-                
-            ';   
+            </ul>
+
+            ';
         }
         // se nao existir eventos
     else {
-    
+
         $html .= '
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-            <i class="fa fa-clock-o fa-lg"></i>                    
+            <i class="fa fa-clock-o fa-lg"></i>
         </a>
-        <ul class="dropdown-menu">               
+        <ul class="dropdown-menu">
             <li class="header"> Não há evento(s) próximo(s)! </li>
         </ul>
-        '; 
+        ';
 
-    }    
+    }
 ?>
 
 <header class="main-header">
     <!-- Título ou Logo do Site -->
     <a href="/index.php" class="logo">
         <!-- Título ou Logo minimizado (50x50 pixels) -->
-        <span class="logo-mini">RISE</span>
+        <span class="logo-mini"><img align="left" class="img-logorise" src="/img/rise-branco.png" alt="IT-One"></span>
         <!-- Título ou Logo em tamanho normal -->
-        <span class="logo-lg"><b>RISE</b></span>                    
+        <span class="logo-lg"><img align="left" class="img-logorisedireita" src="/img/rise-branco-direita.png" alt="IT-One"></span>
     </a>
     <!-- Barra de Navegação superior -->
     <nav class="navbar navbar-static-top">
-        
+
         <!-- Botão para minimizar o menu lateral (toggle button)  -->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">|||</span>
         </a>
-        
+
         <!-- Menu à direita -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                
+
                 <!-- Logo da ITOne -->
                 <a id="imagem" href="/index.php">
                     <img align="left" class="img-logo" src="/img/logo_itone_fundoescuro.png" alt="IT-One">
@@ -125,75 +125,75 @@
 
                 <!-- CRÉDITOS -->
                 <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown"><span class="glyphicon glyphicon-star fa-lg"></span></a> 
+                    <a href="#" class="dropdown"><span class="glyphicon glyphicon-star fa-lg"></span></a>
 
                     <div class="box box-widget dropdown-menu widget-user-2" style="width:800px;">
-                           
-                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7">                                          
+
+                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7">
                             <h5><b>CRÉDITOS DO RISE | PLATAFORMA</b></h5>
                         </div>
-                            
+
                         <div class="col-md-12">
-                            <div class="col-md-4">                            
+                            <div class="col-md-4">
                                 <div class="box-body box-profile" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
                                     <h5 class="text-muted text-center" style="font-size:14px;">Desenvolvimento</h5>
                                     <img class="profile-user-img img-responsive img-circle" src="<?php echo $db_filebox->loadImagem(2,63);?>" style='border: 0px solid #dddd; width:70px;'>
                                     <h4 class="profile-username text-center" style="font-size:18px;">Felipe Baeta</h4>
-                                </div> 
+                                </div>
                             </div>
-                            <div class="col-md-4">                            
+                            <div class="col-md-4">
                                 <div class="box-body box-profile" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
                                     <h5 class="text-muted text-center" style="font-size:14px;">Líder de desenvolvimento</h5>
                                     <img class="profile-user-img img-responsive img-circle" src="<?php echo $db_filebox->loadImagem(2,1);?>" style='border: 0px solid #dddd; width:70px;'>
                                     <h4 class="profile-username text-center" style="font-size:18px;">Rafael Teixeira</h4>
-                                </div>                                      
+                                </div>
                             </div>
-                            <div class="col-md-4">                            
+                            <div class="col-md-4">
                                 <div class="box-body box-profile">
                                     <h5 class="text-muted text-center" style="font-size:14px;">Criador da iniciativa</h5>
                                     <img class="profile-user-img img-responsive img-circle" src="<?php echo $db_filebox->loadImagem(2,2);?>" style='border: 0px solid #dddd; width:70px;'>
                                     <h4 class="profile-username text-center" style="font-size:18px;">Ricardo Paiva</h4>
-                                </div> 
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7">                                          
+                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7">
                             <h5><b>TERRITÓRIOS ATIVOS</b></h5>
                         </div>
 
                         <div class="col-md-12">
                             <div class="col-md-6">
                                 <div class="box-body box-profile" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
-                                    <h5 class="profile-username text-center" style="font-size:18px;"><b>RISE</b></h5>             
-                                </div>          
+                                    <h5 class="profile-username text-center" style="font-size:18px;"><b>RISE</b></h5>
+                                </div>
                             </div>
-                            <div class="col-md-6">                            
+                            <div class="col-md-6">
                                 <div class="box-body box-profile">
-                                    <h5 class="profile-username text-center" style="font-size:18px;"><b>GAME OF TOWERS</b></h5>             
-                                </div>                                      
+                                    <h5 class="profile-username text-center" style="font-size:18px;"><b>GAME OF TOWERS</b></h5>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7">                                          
+                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7">
                             <h5><b>AMBIENTES DISPONÍVEIS</b></h5>
                         </div>
 
                         <div class="col-md-12">
                             <div class="col-md-4">
                                 <div class="box-body box-profile" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
-                                    <h5 class="text-muted text-center" style="font-size:18;"><b>3 : DEV</b></h5>              
-                                </div>          
+                                    <h5 class="text-muted text-center" style="font-size:18;"><b>3 : DEV</b></h5>
+                                </div>
                             </div>
-                            <div class="col-md-4">                            
+                            <div class="col-md-4">
                                 <div class="box-body box-profile" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
-                                    <h5 class="text-muted text-center" style="font-size:18;"><b>1 : HML</b></h5>             
-                                </div>                                      
+                                    <h5 class="text-muted text-center" style="font-size:18;"><b>1 : HML</b></h5>
+                                </div>
                             </div>
-                            <div class="col-md-4">                            
+                            <div class="col-md-4">
                                 <div class="box-body box-profile">
                                     <h5 class="text-muted text-center" style="font-size:18;"><b>1 : PRD</b></h5>
-                                </div> 
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7;">                                          
+                        <div class="col-md-12" align="center" style="padding: 2px; background-color:#F7F7F7;">
                             <h5><b>TECNOLOGIAS EMPREGADAS</b></h5>
                         </div>
 
@@ -201,35 +201,35 @@
                             <div class="col-md-3" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
                                 <div class="box-body box-profile">
                                     <h4 class="profile-username text-center" style="font-size:18px;" >+ LINUX</h4>
-                                    <h5 class="text-muted text-center" style="font-size:14px;">+ Shell Script</h5>              
-                                </div>          
+                                    <h5 class="text-muted text-center" style="font-size:14px;">+ Shell Script</h5>
+                                </div>
                             </div>
-                            <div class="col-md-3" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">                            
+                            <div class="col-md-3" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
                                 <div class="box-body box-profile">
                                     <h4 class="profile-username text-center" style="font-size:18px;">+ APACHE</h4>
-                                    <h5 class="text-muted text-center" style="font-size:14px;"> + HTML + CSS</h5>              
-                                </div>                                      
+                                    <h5 class="text-muted text-center" style="font-size:14px;"> + HTML + CSS</h5>
+                                </div>
                             </div>
-                            <div class="col-md-3" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">                            
+                            <div class="col-md-3" style="border-width: thin; border-style: ridge; border-left-style: none; border-bottom-style: none; border-top-style: none;">
                                 <div class="box-body box-profile">
                                     <h4 class="profile-username text-center" style="font-size:18px;">+ PHP</h4>
-                                    <h5 class="text-muted text-center" style="font-size:14px;">+ Bootstrap + Ajax</h5>              
-                                </div>                                      
+                                    <h5 class="text-muted text-center" style="font-size:14px;">+ Bootstrap + Ajax</h5>
+                                </div>
                             </div>
-                            <div class="col-md-3">                            
+                            <div class="col-md-3">
                                 <div class="box-body box-profile">
                                     <h4 class="profile-username text-center" style="font-size:18px;">+ MYSQL</h4>
                                     <h5 class="text-muted text-center" style="font-size:14px;"> + Java Script + JSON</h5>
-                                </div> 
+                                </div>
                             </div>
                         </div>
-                        
-                        <div class="col-md-12" align="center" style="padding: 10px; border-width: thin; border-style: ridge; border-left-style: none; border-right-style: none;">                                          
+
+                        <div class="col-md-12" align="center" style="padding: 10px; border-width: thin; border-style: ridge; border-left-style: none; border-right-style: none;">
                             +|+ <a class="fa fa-lock fa-lg" style="color:green;"></a>  |  Você está navegando em um site seguro, com certificado digital assinado pela GlobalSign Root CA  +|+
                         </div>
-                    </div> 
+                    </div>
                 </li>
-                
+
                 <?php
                     // Identifica o território
                     if(substr_count($_SERVER['PHP_SELF'], '/')>1){
@@ -245,47 +245,47 @@
                     }
                 ?>
                 <li>
-                    <a href="#" data-toggle="modal" data-target="#Sair"><span class="fa fa-sign-out fa-lg"></span></a>                        
+                    <a href="#" data-toggle="modal" data-target="#Sair"><span class="fa fa-sign-out fa-lg"></span></a>
                 </li>
             </ul>
-        </div>                   
-    </nav>                
+        </div>
+    </nav>
 </header>
 
 <div class="modal fade" id="Sair" tabindex="-1" role="dialog" aria-labelledby="Sair" aria-hidden="true">
   <div class="modalPart1" role="document">
     <div class="modalPart2">
         <div class="col-1 col-md-1">
-        
+
         </div>
         <div class="col-7 col-md-7">
             <h5 class="modalPart4" id="TituloModalCentralizado"><span class="fa fa-sign-out"></span> LOGOUT</h5>
-            <div class="modalPart5">          
+            <div class="modalPart5">
                 Obrigado pela visita! Deseja sair agora? <br><br>
-            </div>       
-        
+            </div>
+
             <div class="pull-right" style="width: 100%; float: left; padding: 10px 0px; margin-top:-85px;">
                 <button type="button" class="btn btn-success btn-lg pull-right" data-dismiss="modal">Não</button>
-                <a href="/config/logout.php" type="button" class="btn btn-danger btn-lg pull-right" style="margin-right: 5px;">Sim</a>               
+                <a href="/config/logout.php" type="button" class="btn btn-danger btn-lg pull-right" style="margin-right: 5px;">Sim</a>
             </div>
         </div>
         <div class="col-4 col-md-4">
-        
 
 
-        </div>  
-       
+
+        </div>
+
 
         <!--<h5 class="modalPart4" id="TituloModalCentralizado"><span class="fa fa-sign-out"></span> LOGOUT</h5>
         </button>
       </div>
-      <div class="modalPart5">          
+      <div class="modalPart5">
         <strong> Tem certeza que deseja sair? <br><br></strong>
       </div>
       <div class="pull-right" style="width: 100%; float: left; padding: 10px 0px;">
         <button type="button" class="btn btn-success btnSave pull-right" data-dismiss="modal">Fechar</button>
-        <a href="/config/logout.php" type="button" class="btn btn-default btn pull-right" style="margin-right: 5px;">Sim</a>    -->           
-      
+        <a href="/config/logout.php" type="button" class="btn btn-default btn pull-right" style="margin-right: 5px;">Sim</a>    -->
+
     </div>
   </div>
 </div>
@@ -330,7 +330,7 @@
         document.getElementById("modalHeader").innerHTML =
             '<button class="close" aria-label="Close" type="button" data-dismiss="modal"><span class="fa fa-times" aria-hidden="true"></span></button>'
             +'<h4 class="modal-title" align="center">Próximos Eventos</h4>';
-        
+
         // Exibe o Modal
         $('#modal').modal('show');
     }
@@ -354,7 +354,7 @@
             sessionStorage.setItem('sidebar-toggle-collapsed', '1');
         }
     });
-    
+
     function UpdatePerfil(){
         var postURL = "/admin/ajax/upload.php";
         var pagPart = $('#perfil_modalBody'); // Restringe os objetos em uma parte específica da página
@@ -383,5 +383,5 @@
                 $('#perfil_modal').modal('hide'); // Fecha o Modal
             }
         });
-    }    
+    }
 </script>
